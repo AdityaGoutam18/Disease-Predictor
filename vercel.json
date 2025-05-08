@@ -1,13 +1,23 @@
 {
-    "builds": [{
-        "src": "DiseasePrediction/wsgi.py",
+    "version": 2,
+    "builds": [
+      {
+        "src": "manage.py",
         "use": "@vercel/python",
-        "config": { "maxLambdaSize": "15mb", "runtime": "python3.13.3" }
-    }],
-    "routes": [
-        {
-            "src": "/(.*)",
-            "dest": "DiseasePrediction/wsgi.py"
+        "config": {
+          "maxLambdaSize": "50mb"
         }
+      }
+    ],
+    "routes": [
+      {
+        "src": "/static/(.*)",
+        "dest": "/static/$1"
+      },
+      {
+        "src": "/(.*)",
+        "dest": "manage.py"
+      }
     ]
-}
+  }
+  
